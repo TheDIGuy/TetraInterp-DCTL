@@ -6,7 +6,7 @@
 
 My version includes the black and white point controls, an expanded slider range and minor code clarity "improvements".
 
-The parameters are normalized in the UI params, rather than in the vectorization. This means that the UI will show the actual default values for each corner in the UI (for example, `Red-Red` is `1.000`), as opposed to being zeroed out. This may not be your preferred behaviour, in which case you can use the Nick's original code.
+The parameters are normalized in the UI params section, rather than in the vectorization. This means that the UI will show the actual default values for each corner (for example, `Red-Red` is `1.000`), as opposed to being zeroed out. This may not be your preferred behaviour, in which case you can use Nick's original code.
 
 ## Credits
 
