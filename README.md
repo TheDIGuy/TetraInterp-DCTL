@@ -1,5 +1,7 @@
 # Tetrahedral Interpolation DCTL
 
+A tweaked version of Yedlin's Tetra script, ported to Resolve by [Nick Eason](https://github.com/npeason/Tetra-DCTLOFX).
+
 ![](https://i.postimg.cc/vHnFzzq7/tetra.png)
 
 ## Features
@@ -11,7 +13,7 @@ The parameters are normalized in the UI params section, rather than in the vecto
 The slider range has been significantly expanded. I don't really see a reason the the minimum amount should allow a primary corner to subtract past gray. It does keep
 the sliders centered, though. You can easily set them to whatever you like.
 
-I tried keeping it fairly similar to the Nuke expression, though it doesn't have hard limits on numerical input, only the sliders.
+I tried keeping the sliders fairly similar to the Nuke expression, but couldn't replicate it completely, since it doesn't have hard limits on numerical input, only sliders.
 
 ## Credits
 
