@@ -1,6 +1,6 @@
 # Tetrahedral Interpolation DCTL
 
-A tweaked version of Yedlin's Tetra script, ported to Resolve by [Nick Eason](https://github.com/npeason/Tetra-DCTLOFX).
+A tweaked version of Tetrahedral Interpolation, ported to Resolve by [Nick Eason](https://github.com/npeason/Tetra-DCTLOFX).
 
 ![](https://i.postimg.cc/vHnFzzq7/tetra.png)
 
