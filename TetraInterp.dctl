@@ -1,0 +1,90 @@
+// Tetrahedral Interpolation
+
+// Black Point
+DEFINE_UI_PARAMS(b_RGB, Black-Point, DCTLUI_SLIDER_FLOAT, 0.0, 0.0, 1.0, 0.001)
+
+// White Point
+DEFINE_UI_PARAMS(w_RGB, White-Point, DCTLUI_SLIDER_FLOAT, 1.0, 0.0, 1.0, 0.001)
+
+// Red Point
+DEFINE_UI_PARAMS(r_R, Red-Red, DCTLUI_SLIDER_FLOAT, 1.0, -1.0, 3.0, 0.001)
+DEFINE_UI_PARAMS(r_G, Red-Green, DCTLUI_SLIDER_FLOAT, 0.0, -2.0, 2.0, 0.001)
+DEFINE_UI_PARAMS(r_B, Red-Blue, DCTLUI_SLIDER_FLOAT, 0.0, -2.0, 2.0, 0.001)
+
+// Green Point
+DEFINE_UI_PARAMS(g_R, Green-Red, DCTLUI_SLIDER_FLOAT,  0.0, -2.0, 2.0, 0.001)
+DEFINE_UI_PARAMS(g_G, Green-Green, DCTLUI_SLIDER_FLOAT,  1.0, -1.0, 3.0, 0.001)
+DEFINE_UI_PARAMS(g_B, Green-Blue, DCTLUI_SLIDER_FLOAT,  0.0, -2.0, 2.0, 0.001)
+
+// Blue Point
+DEFINE_UI_PARAMS(b_R, Blue-Red, DCTLUI_SLIDER_FLOAT,  0.0, -2.0, 2.0, 0.001)
+DEFINE_UI_PARAMS(b_G, Blue-Green, DCTLUI_SLIDER_FLOAT,  0.0, -2.0, 2.0, 0.001)
+DEFINE_UI_PARAMS(b_B, Blue-Blue, DCTLUI_SLIDER_FLOAT,  1.0, -1.0, 3.0, 0.001)
+
+// Cyan Point
+DEFINE_UI_PARAMS(c_R, Cyan-Red, DCTLUI_SLIDER_FLOAT,  0.0, -2.0, 2.0, 0.001)
+DEFINE_UI_PARAMS(c_G, Cyan-Green, DCTLUI_SLIDER_FLOAT,  1.0, -1.0, 3.0, 0.001)
+DEFINE_UI_PARAMS(c_B, Cyan-Blue, DCTLUI_SLIDER_FLOAT,  1.0, -1.0, 3.0, 0.001)
+
+// Magenta Point
+DEFINE_UI_PARAMS(m_R, Magenta-Red, DCTLUI_SLIDER_FLOAT,  1.0, -1.0, 3.0, 0.001)
+DEFINE_UI_PARAMS(m_G, Magenta-Green, DCTLUI_SLIDER_FLOAT,  0.0, -2.0, 2.0, 0.001)
+DEFINE_UI_PARAMS(m_B, Magenta-Blue, DCTLUI_SLIDER_FLOAT,  1.0, -1.0, 3.0, 0.001)
+
+// Yellow Point
+DEFINE_UI_PARAMS(y_R, Yellow-Red, DCTLUI_SLIDER_FLOAT,  1.0, -1.0, 3.0, 0.001)
+DEFINE_UI_PARAMS(y_G, Yellow-Green, DCTLUI_SLIDER_FLOAT,  1.0, -1.0, 3.0, 0.001)
+DEFINE_UI_PARAMS(y_B, Yellow-Blue, DCTLUI_SLIDER_FLOAT,  0.0, -2.0, 2.0, 0.001)
+
+
+__DEVICE__ float3 transform(int p_Width, int p_Height, int p_X, int p_Y, float p_R, float p_G, float p_B)
+{
+    float3 rgb; // Working and output buffer
+
+    const float r = p_R;
+    const float g = p_G;
+    const float b = p_B;
+	
+    // Paramater vectorization
+    // Vectorization improves performance and simplifies code.
+    float3 blk = make_float3(b_RGB, b_RGB, b_RGB);
+    float3 wht = make_float3(w_RGB, w_RGB, w_RGB);
+    float3 red = make_float3(r_R, r_G, r_B); 
+    float3 grn = make_float3(g_R, g_G, g_B);
+    float3 blu = make_float3(b_R, b_G, b_B);
+    float3 cyn = make_float3(c_R, c_G, c_B);
+    float3 mag = make_float3(m_R, m_G, m_B);
+    float3 yel = make_float3(y_R, y_G, y_B);
+
+
+    if (r>g) {
+        // r>g>b
+        if (g>b) {
+        	/* Multiplying a float by float3 returns float3. */
+            rgb = r*(red-blk)+blk + g*(yel-red) + b*(wht-yel);
+        }
+        // r>b>g
+        else if (r>b) {
+            rgb = r*(red-blk)+blk + g*(wht-mag) + b*(mag-red);
+        }
+        // b>r>g
+        else {
+            rgb = r*(mag-blu) + g*(wht-mag) + b*(blu-blk)+blk;
+        }
+    } else {
+        // b>g>r
+        if (b>g) {
+            rgb = r*(wht-cyn) + g*(cyn-blu) + b*(blu-blk)+blk;
+        }
+        // g>b>r
+        else if (b>r) {
+            rgb = r*(wht-cyn) + g*(grn-blk)+blk + b*(cyn-grn);
+        }
+        // g>r>b
+        else {
+            rgb = r*(yel-grn) + g*(grn-blk)+blk + b*(wht-yel);
+        }
+    }
+
+    return rgb;
+}
