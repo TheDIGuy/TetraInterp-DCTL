@@ -6,12 +6,11 @@ A tweaked version of Tetrahedral Interpolation, ported to Resolve by [Nick Eason
 
 ## Features
 
-My version includes the black and white point controls, an expanded slider range and minor code clarity "improvements".
+This version includes the black point control, slightly different slider values and various opinionated code tweaks. There is also an HSV version for anyone that prefers that color model.
 
 The parameters are normalized in the UI params section, rather than in the vectorization. This means that the UI will show the actual default values for each corner (for example, `Red-Red` is `1.000`), as opposed to being zeroed out. This may not be your preferred behaviour, in which case you can use Nick's original code.
 
-The slider range has been significantly expanded. I don't really see a reason the the minimum amount should allow a primary corner to subtract past gray. It does keep
-the sliders centered, though. You can easily set them to whatever you like.
+The slider range has been significantly expanded from the original. I don't really see a reason the minimum amount should allow a primary corner to subtract past gray. It does keep the sliders centered, though. You can easily set them to whatever you like.
 
 I tried keeping the sliders fairly similar to the Nuke expression, but couldn't replicate it completely, since it doesn't have hard limits on numerical input, only sliders.
 
@@ -20,9 +19,7 @@ I tried keeping the sliders fairly similar to the Nuke expression, but couldn't 
 - Originally [reconstructed for Nuke](https://github.com/calvinsilly/Tetrahedral-Interpolation) by calvinsilly
 - [Ported to Fusion](https://github.com/EmberLightVFX/Tetrahedral-Interpolation-for-Fusion) by EmberLightVFX
 - [Ported to DCTL](https://github.com/xavijulez/Tetrahedral-Interpolation-DCTL) by Xavi Julia
-- [Separately ported to DCTL](https://github.com/npeason/Tetra-DCTLOFX) by Nick Eason
-
-And tweaked by me.
+- And [separately ported to DCTL](https://github.com/npeason/Tetra-DCTLOFX) by Nick Eason.
 
 ## Threads/Resources
 
