@@ -1,10 +1,16 @@
 // Tetrahedral Interpolation
 
+// https://github.com/TheDIGuy/TetraInterp-DCTL
+
 // Black Point
-DEFINE_UI_PARAMS(b_RGB, Black-Point, DCTLUI_SLIDER_FLOAT, 0.0, 0.0, 1.0, 0.001)
+DEFINE_UI_PARAMS(bl_R, Black-Red, DCTLUI_SLIDER_FLOAT, 0.0, -0.25, 1.0, 0.001)
+DEFINE_UI_PARAMS(bl_G, Black-Green, DCTLUI_SLIDER_FLOAT, 0.0, -0.25, 1.0, 0.001)
+DEFINE_UI_PARAMS(bl_B, Black-Blue, DCTLUI_SLIDER_FLOAT, 0.0, -0.25, 1.0, 0.001)
 
 // White Point
-DEFINE_UI_PARAMS(w_RGB, White-Point, DCTLUI_SLIDER_FLOAT, 1.0, 0.0, 1.0, 0.001)
+DEFINE_UI_PARAMS(wh_R, White-Red, DCTLUI_SLIDER_FLOAT, 1.0, 0.0, 1.25, 0.001)
+DEFINE_UI_PARAMS(wh_G, White-Green, DCTLUI_SLIDER_FLOAT, 1.0, 0.0, 1.25, 0.001)
+DEFINE_UI_PARAMS(wh_B, White-Blue, DCTLUI_SLIDER_FLOAT, 1.0, 0.0, 1.25, 0.001)
 
 // Red Point
 DEFINE_UI_PARAMS(r_R, Red-Red, DCTLUI_SLIDER_FLOAT, 1.0, -1.0, 3.0, 0.001)
@@ -44,11 +50,11 @@ __DEVICE__ float3 transform(int p_Width, int p_Height, int p_X, int p_Y, float p
     const float r = p_R;
     const float g = p_G;
     const float b = p_B;
-	
+    
     // Paramater vectorization
     // Vectorization improves performance and simplifies code.
-    float3 blk = make_float3(b_RGB, b_RGB, b_RGB);
-    float3 wht = make_float3(w_RGB, w_RGB, w_RGB);
+    float3 blk = make_float3(bl_R, bl_G, bl_B);
+    float3 wht = make_float3(wh_R, wh_G, wh_B);
     float3 red = make_float3(r_R, r_G, r_B); 
     float3 grn = make_float3(g_R, g_G, g_B);
     float3 blu = make_float3(b_R, b_G, b_B);
@@ -60,7 +66,7 @@ __DEVICE__ float3 transform(int p_Width, int p_Height, int p_X, int p_Y, float p
     if (r>g) {
         // r>g>b
         if (g>b) {
-        	/* Multiplying a float by float3 returns float3. */
+            /* Multiplying a float by float3 returns float3. */
             rgb = r*(red-blk)+blk + g*(yel-red) + b*(wht-yel);
         }
         // r>b>g
