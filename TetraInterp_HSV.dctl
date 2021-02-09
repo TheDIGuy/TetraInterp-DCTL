@@ -47,12 +47,12 @@ __DEVICE__ float3 transform(int p_Width, int p_Height, int p_X, int p_Y, float p
     
     float3 blk = make_float3(bl_RGB, bl_RGB, bl_RGB);
     float3 wht = make_float3(wh_RGB, wh_RGB, wh_RGB);
-    float3 red = make_float3(1.0f, 0.0f - r_Sat, 0.0f + r_Hue - r_Sat) + make_float3(r_Val, r_Val, r_Val); 
-    float3 grn = make_float3(0.0f - g_Sat, 1.0f, 0.0f + g_Hue - g_Sat) + make_float3(g_Val, g_Val, g_Val);
-    float3 blu = make_float3(0.0f + b_Hue - b_Sat, 0.0f - b_Sat, 1.0f) + make_float3(b_Val, b_Val, b_Val);
-    float3 cyn = make_float3(0.0f - c_Sat, 1.0f + c_Hue, 1.0f) + make_float3(c_Val, c_Val, c_Val);
-    float3 mag = make_float3(1.0f, 0.0f - m_Sat, 1.0f + m_Hue) + make_float3(m_Val, m_Val, m_Val);
-    float3 yel = make_float3(1.0f + y_Hue, 1.0f, 0.0f - y_Sat) + make_float3(y_Val, y_Val, y_Val);
+    float3 red = make_float3(1.0f, 0.0f - r_Sat, 0.0f + r_Hue - r_Sat) + make_float3(r_Val); 
+    float3 grn = make_float3(0.0f - g_Sat, 1.0f, 0.0f + g_Hue - g_Sat) + make_float3(g_Val);
+    float3 blu = make_float3(0.0f + b_Hue - b_Sat, 0.0f - b_Sat, 1.0f) + make_float3(b_Val);
+    float3 cyn = make_float3(0.0f - c_Sat, 1.0f + c_Hue, 1.0f) + make_float3(c_Val);
+    float3 mag = make_float3(1.0f, 0.0f - m_Sat, 1.0f + m_Hue) + make_float3(m_Val);
+    float3 yel = make_float3(1.0f + y_Hue, 1.0f, 0.0f - y_Sat) + make_float3(y_Val);
 
     if (r>g) {
         // r>g>b
