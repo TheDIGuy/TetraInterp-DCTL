@@ -1,6 +1,6 @@
 # Tetrahedral Interpolation DCTL
 
-A tweaked version of Tetrahedral Interpolation, ported to Resolve by [Nick Eason](https://github.com/npeason/Tetra-DCTLOFX).
+A tweaked version of Tetrahedral Interpolation, excellently ported to Resolve by [Nick Eason](https://github.com/npeason/Tetra-DCTLOFX).
 
 ![](https://i.postimg.cc/vHnFzzq7/tetra.png)
 
@@ -23,9 +23,9 @@ I tried keeping the sliders fairly similar to the Nuke expression, but couldn't 
 
 ## Threads/Resources
 
-- LGG [thread](https://liftgammagain.com/forum/index.php?threads/tetrahedral-interpolation.15364/#post-153503)
-- Nuke script [release](https://old.reddit.com/r/cinematography/comments/k6ggq4/steve_yedlins_tetrahedral_script/)
 - Steak Underwater [dev post](https://www.steakunderwater.com/wesuckless/viewtopic.php?t=4319)
-- And the Foundry Community [topic](https://community.foundry.com/discuss/topic/154699/blinkscript-stuck-solving-missing-code-tetrahedral-interpolation)
+- Foundry Community [topic](https://community.foundry.com/discuss/topic/154699/blinkscript-stuck-solving-missing-code-tetrahedral-interpolation)
+- Nuke script [release](https://old.reddit.com/r/cinematography/comments/k6ggq4/steve_yedlins_tetrahedral_script/)
+- LGG [thread](https://liftgammagain.com/forum/index.php?threads/tetrahedral-interpolation.15364/)
 
 Now if someone could figure out how [Tetra Automator](https://i.postimg.cc/C5F7qwQ6/tetra-automator.png) works, that would be great.
