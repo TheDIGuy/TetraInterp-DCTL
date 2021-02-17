@@ -19,7 +19,8 @@ I tried keeping the sliders fairly similar to the Nuke expression, but couldn't 
 - Originally [reconstructed for Nuke](https://github.com/calvinsilly/Tetrahedral-Interpolation) by calvinsilly
 - [Ported to Fusion](https://github.com/EmberLightVFX/Tetrahedral-Interpolation-for-Fusion) by EmberLightVFX
 - [Ported to DCTL](https://github.com/xavijulez/Tetrahedral-Interpolation-DCTL) by Xavi Julia
-- And [separately ported to DCTL](https://github.com/npeason/Tetra-DCTLOFX) by Nick Eason.
+- And [separately ported to DCTL](https://github.com/npeason/Tetra-DCTLOFX) by Nick Eason
+- Also [another DCTL](https://www.juanjosalazar.com/color-science) from Juanjo Salazar and Martí Somoza
 
 ## Threads/Resources
 
