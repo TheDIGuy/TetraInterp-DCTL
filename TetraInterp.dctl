@@ -67,9 +67,9 @@ __DEVICE__ float3 transform(int p_Width, int p_Height, int p_X, int p_Y, float p
 {
     float3 rgb;
 
-    float r = p_R;
-    float g = p_G;
-    float b = p_B;
+    const float r = p_R;
+    const float g = p_G;
+    const float b = p_B;
     
     float3 blk = make_float3(bl_R, bl_G, bl_B);
     float3 wht = make_float3(wh_R, wh_G, wh_B);
