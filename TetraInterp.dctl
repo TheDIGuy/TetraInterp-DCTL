@@ -65,14 +65,12 @@ DEFINE_UI_PARAMS(y_B, Yellow-Blue, DCTLUI_SLIDER_FLOAT,  0.0, -2.0, 2.0, 0.001)
 
 __DEVICE__ float3 transform(int p_Width, int p_Height, int p_X, int p_Y, float p_R, float p_G, float p_B)
 {
-    float3 rgb; // Working and output buffer
+    float3 rgb;
 
-    const float r = p_R;
-    const float g = p_G;
-    const float b = p_B;
+    float r = p_R;
+    float g = p_G;
+    float b = p_B;
     
-    // Paramater vectorization
-    // Vectorization improves performance and simplifies code.
     float3 blk = make_float3(bl_R, bl_G, bl_B);
     float3 wht = make_float3(wh_R, wh_G, wh_B);
     float3 red = make_float3(r_R, r_G, r_B); 
@@ -86,7 +84,6 @@ __DEVICE__ float3 transform(int p_Width, int p_Height, int p_X, int p_Y, float p
     if (r>g) {
         // r>g>b
         if (g>b) {
-            /* Multiplying a float by float3 returns float3. */
             rgb = r*(red-blk)+blk + g*(yel-red) + b*(wht-yel);
         }
         // r>b>g
