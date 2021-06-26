@@ -20,92 +20,78 @@
 // OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
 // SOFTWARE.
 
-// https://github.com/TheDIGuy/TetraInterp-DCTL
+DEFINE_UI_PARAMS(blk_r, Black-Red, DCTLUI_SLIDER_FLOAT, 0.0, -0.25, 1.0, 0.001)
+DEFINE_UI_PARAMS(blk_g, Black-Green, DCTLUI_SLIDER_FLOAT, 0.0, -0.25, 1.0, 0.001)
+DEFINE_UI_PARAMS(blk_b, Black-Blue, DCTLUI_SLIDER_FLOAT, 0.0, -0.25, 1.0, 0.001)
 
-// Black Point
-DEFINE_UI_PARAMS(bl_R, Black-Red, DCTLUI_SLIDER_FLOAT, 0.0, -0.25, 1.0, 0.001)
-DEFINE_UI_PARAMS(bl_G, Black-Green, DCTLUI_SLIDER_FLOAT, 0.0, -0.25, 1.0, 0.001)
-DEFINE_UI_PARAMS(bl_B, Black-Blue, DCTLUI_SLIDER_FLOAT, 0.0, -0.25, 1.0, 0.001)
+DEFINE_UI_PARAMS(wht_r, White-Red, DCTLUI_SLIDER_FLOAT, 1.0, 0.0, 1.25, 0.001)
+DEFINE_UI_PARAMS(wht_g, White-Green, DCTLUI_SLIDER_FLOAT, 1.0, 0.0, 1.25, 0.001)
+DEFINE_UI_PARAMS(wht_b, White-Blue, DCTLUI_SLIDER_FLOAT, 1.0, 0.0, 1.25, 0.001)
 
-// White Point
-DEFINE_UI_PARAMS(wh_R, White-Red, DCTLUI_SLIDER_FLOAT, 1.0, 0.0, 1.25, 0.001)
-DEFINE_UI_PARAMS(wh_G, White-Green, DCTLUI_SLIDER_FLOAT, 1.0, 0.0, 1.25, 0.001)
-DEFINE_UI_PARAMS(wh_B, White-Blue, DCTLUI_SLIDER_FLOAT, 1.0, 0.0, 1.25, 0.001)
+DEFINE_UI_PARAMS(red_r, Red-Red, DCTLUI_SLIDER_FLOAT, 1.0, -1.0, 3.0, 0.001)
+DEFINE_UI_PARAMS(red_g, Red-Green, DCTLUI_SLIDER_FLOAT, 0.0, -2.0, 2.0, 0.001)
+DEFINE_UI_PARAMS(red_b, Red-Blue, DCTLUI_SLIDER_FLOAT, 0.0, -2.0, 2.0, 0.001)
 
-// Red Point
-DEFINE_UI_PARAMS(r_R, Red-Red, DCTLUI_SLIDER_FLOAT, 1.0, -1.0, 3.0, 0.001)
-DEFINE_UI_PARAMS(r_G, Red-Green, DCTLUI_SLIDER_FLOAT, 0.0, -2.0, 2.0, 0.001)
-DEFINE_UI_PARAMS(r_B, Red-Blue, DCTLUI_SLIDER_FLOAT, 0.0, -2.0, 2.0, 0.001)
+DEFINE_UI_PARAMS(grn_r, Green-Red, DCTLUI_SLIDER_FLOAT,  0.0, -2.0, 2.0, 0.001)
+DEFINE_UI_PARAMS(grn_g, Green-Green, DCTLUI_SLIDER_FLOAT,  1.0, -1.0, 3.0, 0.001)
+DEFINE_UI_PARAMS(grn_b, Green-Blue, DCTLUI_SLIDER_FLOAT,  0.0, -2.0, 2.0, 0.001)
 
-// Green Point
-DEFINE_UI_PARAMS(g_R, Green-Red, DCTLUI_SLIDER_FLOAT,  0.0, -2.0, 2.0, 0.001)
-DEFINE_UI_PARAMS(g_G, Green-Green, DCTLUI_SLIDER_FLOAT,  1.0, -1.0, 3.0, 0.001)
-DEFINE_UI_PARAMS(g_B, Green-Blue, DCTLUI_SLIDER_FLOAT,  0.0, -2.0, 2.0, 0.001)
+DEFINE_UI_PARAMS(blu_r, Blue-Red, DCTLUI_SLIDER_FLOAT,  0.0, -2.0, 2.0, 0.001)
+DEFINE_UI_PARAMS(blu_g, Blue-Green, DCTLUI_SLIDER_FLOAT,  0.0, -2.0, 2.0, 0.001)
+DEFINE_UI_PARAMS(blu_b, Blue-Blue, DCTLUI_SLIDER_FLOAT,  1.0, -1.0, 3.0, 0.001)
 
-// Blue Point
-DEFINE_UI_PARAMS(b_R, Blue-Red, DCTLUI_SLIDER_FLOAT,  0.0, -2.0, 2.0, 0.001)
-DEFINE_UI_PARAMS(b_G, Blue-Green, DCTLUI_SLIDER_FLOAT,  0.0, -2.0, 2.0, 0.001)
-DEFINE_UI_PARAMS(b_B, Blue-Blue, DCTLUI_SLIDER_FLOAT,  1.0, -1.0, 3.0, 0.001)
+DEFINE_UI_PARAMS(cyn_r, Cyan-Red, DCTLUI_SLIDER_FLOAT,  0.0, -2.0, 2.0, 0.001)
+DEFINE_UI_PARAMS(cyn_g, Cyan-Green, DCTLUI_SLIDER_FLOAT,  1.0, -1.0, 3.0, 0.001)
+DEFINE_UI_PARAMS(cyn_b, Cyan-Blue, DCTLUI_SLIDER_FLOAT,  1.0, -1.0, 3.0, 0.001)
 
-// Cyan Point
-DEFINE_UI_PARAMS(c_R, Cyan-Red, DCTLUI_SLIDER_FLOAT,  0.0, -2.0, 2.0, 0.001)
-DEFINE_UI_PARAMS(c_G, Cyan-Green, DCTLUI_SLIDER_FLOAT,  1.0, -1.0, 3.0, 0.001)
-DEFINE_UI_PARAMS(c_B, Cyan-Blue, DCTLUI_SLIDER_FLOAT,  1.0, -1.0, 3.0, 0.001)
+DEFINE_UI_PARAMS(mag_r, Magenta-Red, DCTLUI_SLIDER_FLOAT,  1.0, -1.0, 3.0, 0.001)
+DEFINE_UI_PARAMS(mag_g, Magenta-Green, DCTLUI_SLIDER_FLOAT,  0.0, -2.0, 2.0, 0.001)
+DEFINE_UI_PARAMS(mag_b, Magenta-Blue, DCTLUI_SLIDER_FLOAT,  1.0, -1.0, 3.0, 0.001)
 
-// Magenta Point
-DEFINE_UI_PARAMS(m_R, Magenta-Red, DCTLUI_SLIDER_FLOAT,  1.0, -1.0, 3.0, 0.001)
-DEFINE_UI_PARAMS(m_G, Magenta-Green, DCTLUI_SLIDER_FLOAT,  0.0, -2.0, 2.0, 0.001)
-DEFINE_UI_PARAMS(m_B, Magenta-Blue, DCTLUI_SLIDER_FLOAT,  1.0, -1.0, 3.0, 0.001)
-
-// Yellow Point
-DEFINE_UI_PARAMS(y_R, Yellow-Red, DCTLUI_SLIDER_FLOAT,  1.0, -1.0, 3.0, 0.001)
-DEFINE_UI_PARAMS(y_G, Yellow-Green, DCTLUI_SLIDER_FLOAT,  1.0, -1.0, 3.0, 0.001)
-DEFINE_UI_PARAMS(y_B, Yellow-Blue, DCTLUI_SLIDER_FLOAT,  0.0, -2.0, 2.0, 0.001)
-
+DEFINE_UI_PARAMS(yel_r, Yellow-Red, DCTLUI_SLIDER_FLOAT,  1.0, -1.0, 3.0, 0.001)
+DEFINE_UI_PARAMS(yel_g, Yellow-Green, DCTLUI_SLIDER_FLOAT,  1.0, -1.0, 3.0, 0.001)
+DEFINE_UI_PARAMS(yel_b, Yellow-Blue, DCTLUI_SLIDER_FLOAT,  0.0, -2.0, 2.0, 0.001)
 
 __DEVICE__ float3 transform(int p_Width, int p_Height, int p_X, int p_Y, float p_R, float p_G, float p_B)
 {
-    float3 rgb;
+    float3 rgb = make_float3(p_R, p_G, p_B);
 
-    const float r = p_R;
-    const float g = p_G;
-    const float b = p_B;
-    
-    float3 blk = make_float3(bl_R, bl_G, bl_B);
-    float3 wht = make_float3(wh_R, wh_G, wh_B);
-    float3 red = make_float3(r_R, r_G, r_B); 
-    float3 grn = make_float3(g_R, g_G, g_B);
-    float3 blu = make_float3(b_R, b_G, b_B);
-    float3 cyn = make_float3(c_R, c_G, c_B);
-    float3 mag = make_float3(m_R, m_G, m_B);
-    float3 yel = make_float3(y_R, y_G, y_B);
+    float3 blk = make_float3(blk_r, blk_g, blk_b);
+    float3 wht = make_float3(wht_r, wht_g, wht_b);
+    float3 red = make_float3(red_r, red_g, red_b); 
+    float3 grn = make_float3(grn_r, grn_g, grn_b);
+    float3 blu = make_float3(blu_r, blu_g, blu_b);
+    float3 cyn = make_float3(cyn_r, cyn_g, cyn_b);
+    float3 mag = make_float3(mag_r, mag_g, mag_b);
+    float3 yel = make_float3(yel_r, yel_g, yel_b);
 
-
-    if (r>g) {
-        // r>g>b
-        if (g>b) {
-            rgb = r*(red-blk)+blk + g*(yel-red) + b*(wht-yel);
+    if (rgb.x > rgb.y)
+    {
+        if (rgb.y > rgb.z)
+        {
+            rgb = rgb.x * (red - blk) + blk + rgb.y * (yel - red) + rgb.z * (wht - yel);
         }
-        // r>b>g
-        else if (r>b) {
-            rgb = r*(red-blk)+blk + g*(wht-mag) + b*(mag-red);
+        else if (rgb.x > rgb.z)
+        {
+            rgb = rgb.x * (red - blk) + blk + rgb.y * (wht - mag) + rgb.z * (mag - red);
         }
-        // b>r>g
+        else
+        {
+            rgb = rgb.x * (mag - blu) + rgb.y * (wht - mag) + rgb.z * (blu - blk) + blk;
+        }
+    }
+    else
+    {
+        if (rgb.z > rgb.y)
+        {
+            rgb = rgb.x * (wht - cyn) + rgb.y * (cyn - blu) + rgb.z * (blu - blk) + blk;
+        }
+        else if (rgb.z > rgb.x)
+        {
+            rgb = rgb.x * (wht - cyn) + rgb.y * (grn - blk) + blk + rgb.z * (cyn - grn);
+        }
         else {
-            rgb = r*(mag-blu) + g*(wht-mag) + b*(blu-blk)+blk;
-        }
-    } else {
-        // b>g>r
-        if (b>g) {
-            rgb = r*(wht-cyn) + g*(cyn-blu) + b*(blu-blk)+blk;
-        }
-        // g>b>r
-        else if (b>r) {
-            rgb = r*(wht-cyn) + g*(grn-blk)+blk + b*(cyn-grn);
-        }
-        // g>r>b
-        else {
-            rgb = r*(yel-grn) + g*(grn-blk)+blk + b*(wht-yel);
+            rgb = rgb.x * (yel - grn) + rgb.y * (grn - blk) + blk + rgb.z * (wht - yel);
         }
     }
 

@@ -1,0 +1,118 @@
+// MIT License
+
+// Copyright (c) 2021 calvinsilly, Ember Light, Nick Eason
+
+// Permission is hereby granted, free of charge, to any person obtaining a copy
+// of this software and associated documentation files (the "Software"), to deal
+// in the Software without restriction, including without limitation the rights
+// to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
+// copies of the Software, and to permit persons to whom the Software is
+// furnished to do so, subject to the following conditions:
+
+// The above copyright notice and this permission notice shall be included in all
+// copies or substantial portions of the Software.
+
+// THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+// IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+// FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
+// AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+// LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
+// OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
+// SOFTWARE.
+
+DEFINE_UI_PARAMS(blk_rgb, Black-Point, DCTLUI_SLIDER_FLOAT, 0.0, -0.25, 1.0, 0.001)
+DEFINE_UI_PARAMS(wht_rgb, White-Point, DCTLUI_SLIDER_FLOAT, 1.0, 0.0, 1.25, 0.001)
+
+DEFINE_UI_PARAMS(red_hue, Red-Hue, DCTLUI_SLIDER_FLOAT, 0.0, -1.0, 1.0, 0.001)
+DEFINE_UI_PARAMS(red_sat, Red-Sat, DCTLUI_SLIDER_FLOAT, 0.0, -1.0, 1.0, 0.001)
+DEFINE_UI_PARAMS(red_val, Red-Value, DCTLUI_SLIDER_FLOAT, 0.0, -1.0, 1.0, 0.001)
+
+DEFINE_UI_PARAMS(grn_hue, Green-Hue, DCTLUI_SLIDER_FLOAT, 0.0, -1.0, 1.0, 0.001)
+DEFINE_UI_PARAMS(grn_sat, Green-Sat, DCTLUI_SLIDER_FLOAT, 0.0, -1.0, 1.0, 0.001)
+DEFINE_UI_PARAMS(grn_val, Green-Value, DCTLUI_SLIDER_FLOAT, 0.0, -1.0, 1.0, 0.001)
+
+DEFINE_UI_PARAMS(blu_hue, Blue-Hue, DCTLUI_SLIDER_FLOAT, 0.0, -1.0, 1.0, 0.001)
+DEFINE_UI_PARAMS(blu_sat, Blue-Sat, DCTLUI_SLIDER_FLOAT, 0.0, -1.0, 1.0, 0.001)
+DEFINE_UI_PARAMS(blu_val, Blue-Value, DCTLUI_SLIDER_FLOAT, 0.0, -1.0, 1.0, 0.001)
+
+DEFINE_UI_PARAMS(cyn_hue, Cyan-Hue, DCTLUI_SLIDER_FLOAT, 0.0, -1.0, 1.0, 0.001)
+DEFINE_UI_PARAMS(cyn_sat, Cyan-Sat, DCTLUI_SLIDER_FLOAT, 0.0, -1.0, 1.0, 0.001)
+DEFINE_UI_PARAMS(cyn_val, Cyan-Value, DCTLUI_SLIDER_FLOAT, 0.0, -1.0, 1.0, 0.001)
+
+DEFINE_UI_PARAMS(mag_hue, Magenta-Hue, DCTLUI_SLIDER_FLOAT, 0.0, -1.0, 1.0, 0.001)
+DEFINE_UI_PARAMS(mag_sat, Magenta-Sat, DCTLUI_SLIDER_FLOAT, 0.0, -1.0, 1.0, 0.001)
+DEFINE_UI_PARAMS(mag_val, Magenta-Value, DCTLUI_SLIDER_FLOAT, 0.0, -1.0, 1.0, 0.001)
+
+DEFINE_UI_PARAMS(yel_hue, Yellow-Hue, DCTLUI_SLIDER_FLOAT, 0.0, -1.0, 1.0, 0.001)
+DEFINE_UI_PARAMS(yel_sat, Yellow-Sat, DCTLUI_SLIDER_FLOAT, 0.0, -1.0, 1.0, 0.001)
+DEFINE_UI_PARAMS(yel_val, Yellow-Value, DCTLUI_SLIDER_FLOAT,  0.0, -1.0, 1.0, 0.001)
+
+__DEVICE__ float3 transform(int p_Width, int p_Height, int p_X, int p_Y, float p_R, float p_G, float p_B)
+{
+    float3 rgb = make_float3(p_R, p_G, p_B);
+
+    float red_0 = red_val + 1.0f;
+    float red_1 = red_val - red_sat;
+    float red_2 = red_val + red_hue - red_sat;
+
+    float grn_0 = grn_val - grn_sat;
+    float grn_1 = grn_val + 1.0f;
+    float grn_2 = grn_val + grn_hue - grn_sat;
+
+    float blu_0 = blu_val + blu_hue - blu_sat;
+    float blu_1 = blu_val - blu_sat;
+    float blu_2 = blu_val + 1.0f;
+
+    float cyn_0 = cyn_val - cyn_sat;
+    float cyn_1 = cyn_val + 1.0f + cyn_hue;
+    float cyn_2 = cyn_val + 1.0f;
+
+    float mag_0 = mag_val + 1.0f;
+    float mag_1 = mag_val - mag_sat;
+    float mag_2 = mag_val + 1.0f + mag_hue;
+
+    float yel_0 = yel_val + 1.0f + yel_hue;
+    float yel_1 = yel_val + 1.0f;
+    float yel_2 = yel_val - yel_sat;
+
+    float3 blk = make_float3(blk_rgb, blk_rgb, blk_rgb);
+    float3 wht = make_float3(wht_rgb, wht_rgb, wht_rgb);
+    float3 red = make_float3(red_0, red_1, red_2); 
+    float3 grn = make_float3(grn_0, grn_1, grn_2);
+    float3 blu = make_float3(blu_0, blu_1, blu_2);
+    float3 cyn = make_float3(cyn_0, cyn_1, cyn_2);
+    float3 mag = make_float3(mag_0, mag_1, mag_2);
+    float3 yel = make_float3(yel_0, yel_1, yel_2);
+
+    if (rgb.x > rgb.y)
+    {
+        if (rgb.y > rgb.z)
+        {
+            rgb = rgb.x * (red - blk) + blk + rgb.y * (yel - red) + rgb.z * (wht - yel);
+        }
+        else if (rgb.x > rgb.z)
+        {
+            rgb = rgb.x * (red - blk) + blk + rgb.y * (wht - mag) + rgb.z * (mag - red);
+        }
+        else
+        {
+            rgb = rgb.x * (mag - blu) + rgb.y * (wht - mag) + rgb.z * (blu - blk) + blk;
+        }
+    }
+    else
+    {
+        if (rgb.z > rgb.y)
+        {
+            rgb = rgb.x * (wht - cyn) + rgb.y * (cyn - blu) + rgb.z * (blu - blk) + blk;
+        }
+        else if (rgb.z > rgb.x)
+        {
+            rgb = rgb.x * (wht - cyn) + rgb.y * (grn - blk) + blk + rgb.z * (cyn - grn);
+        }
+        else {
+            rgb = rgb.x * (yel - grn) + rgb.y * (grn - blk) + blk + rgb.z * (wht - yel);
+        }
+    }
+
+    return rgb;
+}
